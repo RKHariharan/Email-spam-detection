@@ -5,16 +5,89 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Email Spam Classification</title>
     <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f9fafb;
+            margin: 0;
+            padding: 20px;
+            color: #1e293b;
+        }
+
+        h2 {
+            text-align: center;
+            color: #0f172a;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 20px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        label {
+            font-weight: 600;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #cbd5e1;
+            resize: vertical;
+        }
+
+        input[type="submit"] {
+            margin-top: 10px;
+            background-color: #3b82f6;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #2563eb;
+        }
+
         table {
             width: 100%;
+            margin-top: 40px;
             border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+            overflow: hidden;
         }
-        table, th, td {
-            border: 1px solid black;
-            padding: 8px;
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
         }
+
         th {
-            background-color: #f2f2f2;
+            background-color: #f1f5f9;
+        }
+
+        tr:hover {
+            background-color: #f9fafb;
+        }
+
+        button {
+            background-color: #ef4444;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #dc2626;
         }
     </style>
 </head>
@@ -22,17 +95,12 @@
     <h2>Email Spam Classification</h2>
     <form action="/" method="post">
         <label for="email_content">Email Message:</label><br>
-        <textarea id="email_content" name="email_content" rows="4" cols="50"></textarea><br><br>
+        <textarea id="email_content" name="email_content" rows="4" required></textarea><br><br>
         <input type="submit" value="Predict">
     </form>
 
-    {% if prediction %}
-    <h3>Classification Result</h3>
-    <p>The email is predicted as: {{ prediction }}</p>
-    {% endif %}
-
     <h2>Previous Predictions</h2>
-    <table border="1">
+    <table>
         <thead>
             <tr>
                 <th>ID</th>

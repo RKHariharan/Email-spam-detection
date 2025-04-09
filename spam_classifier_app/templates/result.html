@@ -3,11 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Email Spam Classification Result</title>
+    <title>Prediction Result</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f0f9ff;
+            margin: 0;
+            padding: 40px;
+            text-align: center;
+            color: #0f172a;
+        }
+
+        .result-box {
+            display: inline-block;
+            padding: 30px;
+            background: #e0f2fe;
+            border-left: 6px solid #0284c7;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            animation: slideFade 0.5s ease-out;
+        }
+
+        a {
+            display: block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #3b82f6;
+            font-weight: 500;
+        }
+
+        a:hover {
+            color: #1d4ed8;
+        }
+
+        @keyframes slideFade {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
 <body>
     <h2>Classification Result</h2>
-    <p>The email is predicted as: {{ prediction }}</p>
-    <p><a href="/">Back to Input</a></p>
+    <div class="result-box">
+        The email is predicted as: {{ prediction }}
+    </div>
+    <a href="/">← Back to Input</a>
 </body>
 </html>
