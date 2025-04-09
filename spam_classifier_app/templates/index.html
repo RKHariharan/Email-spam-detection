@@ -53,6 +53,30 @@
             background-color: #2563eb;
         }
 
+        .result-box {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #e0f2fe;
+            border-left: 6px solid #0284c7;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            animation: slideFade 0.4s ease-out;
+            text-align: center;
+        }
+
+        @keyframes slideFade {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         table {
             width: 100%;
             margin-top: 40px;
@@ -93,11 +117,21 @@
 </head>
 <body>
     <h2>Email Spam Classification</h2>
+
     <form action="/" method="post">
         <label for="email_content">Email Message:</label><br>
         <textarea id="email_content" name="email_content" rows="4" required></textarea><br><br>
         <input type="submit" value="Predict">
     </form>
+
+    {% if latest_prediction %}
+    <div class="result-box"
+        style="color: {% if latest_prediction == 'Spam' %}#dc2626{% else %}#16a34a{% endif %};
+                background-color: {% if latest_prediction == 'Spam' %}#fee2e2{% else %}#dcfce7{% endif %};">
+        The email is predicted as: {{ latest_prediction }}
+    </div>
+
+    {% endif %}
 
     <h2>Previous Predictions</h2>
     <table>
