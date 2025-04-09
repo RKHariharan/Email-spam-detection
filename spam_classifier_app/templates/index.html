@@ -103,7 +103,6 @@
     <table>
         <thead>
             <tr>
-                <th>ID</th>
                 <th>Email Content</th>
                 <th>Prediction</th>
                 <th>Action</th>
@@ -112,7 +111,6 @@
         <tbody>
             {% for prediction in predictions %}
             <tr>
-                <td>{{ prediction.id }}</td>
                 <td>{{ prediction.input_text }}</td>
                 <td>{{ prediction.prediction_result }}</td>
                 <td>
